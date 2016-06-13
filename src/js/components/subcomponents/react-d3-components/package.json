@@ -1,0 +1,68 @@
+{
+  "name": "react-d3-components",
+  "version": "0.5.2",
+  "description": "D3 components for React",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codesuki/react-d3-components.git"
+  },
+  "keywords": [
+    "d3",
+    "react",
+    "graph",
+    "visualization",
+    "chart",
+    "react-component"
+  ],
+  "author": {
+    "name": "Neri Marschik",
+    "email": "marschik_neri@cyberagent.co.jp",
+    "url": "http://www.cyberagent.co.jp"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codesuki/react-d3-components/issues"
+  },
+  "homepage": "https://github.com/codesuki/react-d3-components",
+  "peerDependencies": {
+    "react": "^0.13.1"
+  },
+  "dependencies": {
+    "d3": "^3.5.3"
+  },
+  "devDependencies": {
+    "babel": "^4.6.4",
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.2.0",
+    "eslint-plugin-react": "^3.4.2",
+    "webpack": "^1.7.3"
+  },
+  "scripts": {
+    "prepublish": "babel -c -d ./lib ./src/",
+    "postpublish": "rm -r ./lib",
+    "build:js": "webpack && webpack --config webpack.config.min.js"
+  },
+  "gitHead": "a7614ede187cdc8b7bf0229c5318328f6b5abdcb",
+  "_id": "react-d3-components@0.5.2",
+  "_shasum": "fec7d6edd3902d25dc24d1bff77aaab916734410",
+  "_from": "react-d3-components@*",
+  "_npmVersion": "2.3.0",
+  "_nodeVersion": "0.10.33",
+  "_npmUser": {
+    "name": "codesuki",
+    "email": "marschik_neri@cyberagent.co.jp"
+  },
+  "maintainers": [
+    {
+      "name": "codesuki",
+      "email": "marschik_neri@cyberagent.co.jp"
+    }
+  ],
+  "dist": {
+    "shasum": "fec7d6edd3902d25dc24d1bff77aaab916734410",
+    "tarball": "http://registry.npmjs.org/react-d3-components/-/react-d3-components-0.5.2.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/react-d3-components/-/react-d3-components-0.5.2.tgz"
+}

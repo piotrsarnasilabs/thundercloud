@@ -1,0 +1,146 @@
+.view.dashboard{
+  h3.timeskip{
+    color:#c1c1c1;
+    position: absolute;
+    font-style: italic;
+    right:@sidePadding;
+    top:10px;
+  }
+  .keys{
+    margin: 0 auto;
+    text-align: center;
+    color:#dbdbdb;
+    font-size:12px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    .light;
+    .legend{
+      display:inline-block;
+      padding:0 10px;
+      position: relative;
+      .copy{
+        padding-left:20px;
+      }
+      .dot{
+        position: absolute;
+        top:50%;
+        margin-top:-5px;
+        width:10px;
+        height:10px;
+        display:inline-block;
+        .border-radius(10px);
+      }
+    }
+  }
+  .sections{
+    position: relative;
+    margin:0 auto;
+    max-width:@maxWidth + 60;
+    padding:40px 30px 0;
+    .clearfix;
+    section{
+      width: 100%;
+      float:left;
+
+      &.top-and-bottom{
+        .clearfix;
+        float:left;
+        width: 46%;
+        &:nth-child(odd){
+          margin-right: 4%;
+        }
+        &:nth-child(even){
+          margin-left: 4%;
+        }
+      }
+      &.side-by-side{
+        .clearfix;
+        .chart{
+          float:left;
+          width: 46%;
+
+          &:nth-child(odd){
+            margin-left: 4%;
+          }
+          &:nth-child(even){
+            margin-right: 4%;
+          }
+        }
+      }
+      h1.section-header{
+        color:#efefef;
+        font-size:18px;
+        text-transform: uppercase;
+        padding-left:25px;
+        padding-bottom: 20px;
+      }
+      h2.header{
+        color:#efefef;
+        padding-left:30px;
+        text-transform: uppercase;
+        font-size:12px;
+      }
+      .chart{
+        padding-bottom:30px;
+        display: block;
+        font-weight: 300;
+        position: relative;
+        .last-point{
+          position: absolute;
+          top:0;
+          right:0;
+          .bold;
+          &.current{
+            color:#efefef;
+            top:10px;
+            .medium;
+            text-align: right;
+            h4{
+              text-transform: uppercase;
+              font-size:8px;
+              line-height: 12px;
+            }
+          }
+        }
+        svg text{
+          font-size:10px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width:@mobileWidth){
+    .sections{
+      padding:40px 30px;
+      section{
+        width:100%;
+        padding:0;
+
+        &.side-by-side{
+          .clearfix;
+          .chart{
+            float:none;
+            width: 100%;
+
+            &:nth-child(odd),&:nth-child(even){
+              margin:0;
+            }
+          }
+        }
+
+      &.top-and-bottom{
+        .clearfix;
+        float:none;
+        width: 100%;
+        &:nth-child(odd),&:nth-child(even){
+          margin:0;
+        }
+      }
+        .chart{
+          padding-bottom:50px;
+        }
+      }
+    }
+  }
+}

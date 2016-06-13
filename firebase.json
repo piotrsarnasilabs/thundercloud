@@ -1,0 +1,9 @@
+{
+  "firebase": "<-------FIREBASE DATABASE NAME HERE------->",
+  "public": "build",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

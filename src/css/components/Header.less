@@ -1,0 +1,90 @@
+header.main-header{
+  height: 100px;
+  width: 100%;
+  position: relative;
+  background:@headerGray;
+  color:white;
+  padding:0 @sidePadding;
+  box-shadow: 0 0 5px #464646;
+  .wrap{
+    max-width: @maxWidth;
+    margin:0 auto;
+    display: block;
+    height: 100%;
+    position: relative;
+  }
+  .logo{
+    height:80px;
+    width:100px;
+    position:absolute;
+    left:0;
+    top:50%;
+    margin-top:-40px;
+    background: url('../assets/images/silicon-labs-logo-white.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+  h1{
+    font-size:10px;
+    text-transform: uppercase;
+    line-height: 14px;
+  }
+  h2{
+    font-size: 20px;
+    line-height: 26px;
+  }
+  h2{
+    font-size: 20px;
+    line-height: 26px;
+  }
+  h3{
+    padding-bottom: 10px;
+    font-size: 14px;
+  }
+  .now-streaming{
+    position:absolute;
+    right:0;
+    top:50%;
+    text-align: right;
+    .transform(translateY(-50%));
+    h1{
+      color:#c1c1c1;
+      .bold;
+    }
+  }
+  .title{
+    color:white;
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    text-align: center;
+    .transform(translateY(-50%));
+    max-width: 200px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  @media screen and (max-width:@mobileWidth){
+    height:80px;
+    .logo{
+      width:60px;
+    }
+    h1{
+      font-size:12px;
+    }
+    h2{
+      font-size:16px;
+    }
+    h3{
+      padding-bottom:14px;
+    }
+    .title{
+      right:auto;
+      right:initial;
+      text-align: left;
+      left:80px;
+    }
+  }
+}

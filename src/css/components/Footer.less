@@ -1,0 +1,131 @@
+footer{
+  height: @footer-height;
+  width: 100%;
+  background:@secondaryColor;
+  color:white;
+  position:relative;
+  .clearfix;
+  .wrap{
+    max-width: @maxWidth;
+    margin:0 auto;
+    display: block;
+    position: relative;
+  }
+  .user{
+    float: left;
+    width: 20%;
+    position: relative;
+    height:80px;
+    h1,h2{
+      line-height:18px;
+    }
+    .info{
+      position:absolute;
+      top:50%;
+      .transform(translateY(-50%));
+      color:#c1c1c1;
+      h1{
+        .medium;
+        font-size: 14px;
+        color:white;
+      }
+      h2{
+        font-size:12px;
+      }
+    }
+  }
+  .links{
+    position: relative;
+    width:80%;
+    float:right;
+    text-align: right;
+    .clearfix;
+    .button{
+      .medium;
+      text-align: center;
+      color:#c1c1c1;
+      text-transform: uppercase;
+      font-size:12px;
+      position:relative;
+      padding: 0 3%;
+      display: inline-block;
+      width: auto;
+      height:80px;
+      line-height: 80px;
+      &:hover a, &.Tappable-active a{
+        color:#00aeff;
+        border-bottom:1px solid #00aeff;
+      }
+      &.Tappable-inactive a{
+        border-bottom:0;
+        color:#c1c1c1;
+      }
+      a{
+        padding-bottom:2px;
+        color:#c1c1c1;
+      }
+      &:first-child{
+        padding-left:0;
+        &:after{
+          border:0;
+        }
+      }
+      &:after{
+        content:'';
+        display:block;
+        position:absolute;
+        top:50%;
+        left:0;
+        .transform(translateY(-50%));
+        height:20px;
+        border-right: 1px solid rgba(239,239,239, 0.2);
+      }
+      &:last-child{
+        padding-right:0;
+      }
+    }
+  }
+  .copyright{
+    background:@backgroundGray;
+    text-align:center;
+    color:#c1c1c1;
+    margin:0 auto;
+    display:block;
+    line-height: 50px;
+    height:70px;
+  }
+  .padding-container{
+    padding: 0  @sidePadding;
+  }
+
+  @media screen and (max-width:@mobileWidth){
+
+    .padding-container{
+      padding: 0;
+    }
+    .user{
+      float:none;
+      width:100%;
+      padding:0 50px;
+      height:80px;
+    }
+    .wrap{
+      background:@backgroundGray;
+      padding:0;
+    }
+    .links{
+      float:none;
+      flex-wrap: wrap;
+      padding:0;
+      width:100%;
+      .button{
+        width:100%;
+        padding:0;
+        display:block;
+        &:after{
+          display:none;
+        }
+      }
+    }
+  }
+}

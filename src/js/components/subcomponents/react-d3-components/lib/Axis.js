@@ -148,27 +148,29 @@ var Axis = React.createClass({
         var tickElements = ticks.map(function (tick, index) {
             var position = activeScale(tick);
             var translate = transform.replace("{}", position);
-            var color = 'white';
+            var color = '#555555';
             if(tick && typeof tick.getSeconds == "function" && tick.getSeconds() !== 0){
-                color = "rgba(255,255,255,0.4)";
+                color = "rgba(85,85,85,0.4)";
             }
-            var cx = color === 'rgba(255,255,255,0.4)' ? '' : 'bold';
+            var cx = color === 'rgba(85,85,85,0.4)' ? '' : 'bold';
             if(typeof tick =='number' && tick > 999){
                 tickFormat = d3.format("s");
             }
+            let tickValue = tickFormat(tick);
+            tickValue = tickValue && tickValue !== "0" && tickValue.indexOf && tickValue.indexOf('0') === 0 ? tickValue.replace('0','') : tickValue;
             return React.createElement(
                 "g",
                 { key: "" + tick + "." + index, className: "tick", transform: translate },
-                React.createElement("line", { x2: x2, y2: y2, stroke: "white" }),
+                React.createElement("line", { x2: x2, y2: y2, stroke: "#555555" }),
                 React.createElement(
                     "text",
                     { x: x + xTickOffset, y: y + yTickOffset, dy: dy, textAnchor: textAnchor, fill:color, className:cx},
-                    tickFormat(tick)
+                    tickValue
                 )
             );
         });
 
-        var pathElement = _props.transparent ? false : React.createElement("path", { className: "domain", d: d, fill: "none", stroke: "rgba(255,255,255,0.2)", "strokeDasharray":"5,5" });
+        var pathElement = _props.transparent ? false : React.createElement("path", { className: "domain", d: d, fill: "none", stroke: "rgba(85,85,85,0.2)", "strokeDasharray":"5,5" });
 
         return React.createElement(
             "g",

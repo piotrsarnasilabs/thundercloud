@@ -79,7 +79,7 @@ let EnvDashboard = React.createClass({
           value *= 3.28;
         }
         let renderVal = (Math.round(value * 10) / 10) + unit;
-        return (<h3 className="last-point" style={{color:'#ff7100'}}>{renderVal}</h3>);
+        return (<h3 className="last-point" style={{color:'#a1b92e'}}>{renderVal}</h3>);
       }
       catch(e){
         return;
@@ -111,10 +111,26 @@ let EnvDashboard = React.createClass({
     }
     return newData;
   },
+
+  shouldComponentUpdate(nextProps, nextState){
+    if(this.hasRenderedRecently && this.state.unit == nextState.unit){
+      return false;
+    }
+    this.hasRenderedRecently = this.state.unit == nextState.unit && this.state.data === nextState.data;
+    var throttle = 1;
+    try{
+      throttle = Object.keys(this.state.data[0]).length / 2 > 500 ? Object.keys(this.state.data[0]).length / 2 : 500;
+    }catch(e){}
+    setTimeout(()=>{
+      this.hasRenderedRecently = false;
+    },throttle);
+    nextState = nextState || {};
+    return this.state.unit == nextState.unit && this.state.data === nextState.data;
+  },
   render() {
     let motionData = FireBaseTools.formatMotionData(this.state.data);
     let limiter = this.isStreaming ? 30 : false;
-    let header = (<HeaderTitle demoType="motion" title="MOTION" color="#ff7100"/>);
+    let header = (<HeaderTitle demoType="motion" title="MOTION" color="#ffffff"/>);
     var skipsTime;
     if(motionData && motionData.skipsTime){
       skipsTime = (<h3 className="timeskip"><sup>*</sup>Results may include connection loss.</h3>);
@@ -126,8 +142,8 @@ let EnvDashboard = React.createClass({
       metric = false;
       motionData = this.convertToSI(motionData);
     }
-    let orientationLegend = (<Legend data={motionData} streaming={this.isStreaming} keys={['ox','oy','oz']} colors={['#ff7100','#00aeff','#caf200']} unit={'°'} alternateTitles={['x','y','z']}/>);
-    let accLegend = (<Legend data={motionData} streaming={this.isStreaming} keys={['ax','ay','az']} colors={['#ff7100','#00aeff','#caf200']} unit={'g'} alternateTitles={['x','y','z']}/>);
+    let orientationLegend = (<Legend data={motionData} streaming={this.isStreaming} keys={['ox','oy','oz']} colors={['#0B8000','#87a10d','#caf200']} unit={'°'} alternateTitles={['x','y','z']}/>);
+    let accLegend = (<Legend data={motionData} streaming={this.isStreaming} keys={['ax','ay','az']} colors={['#0B8000','#87a10d','#caf200']} unit={'g'} alternateTitles={['x','y','z']}/>);
     return (
       <PageView className="dashboard" 
                 sessionId={this.props.params.session} 
@@ -145,7 +161,7 @@ let EnvDashboard = React.createClass({
                     title={"Speed"}
                     width={this.state.parentWidth}
                     height={260}
-                    color={"#ff7100"}
+                    color={"#a1b92e"}
                     renderAvgLine={true}
                     unit={unit+'/s'}
                     transparentAxis={true}
@@ -159,7 +175,7 @@ let EnvDashboard = React.createClass({
                     height={260}
                     unit={unit}
                     legend={this.renderCurrentUnit(motionData, 'distance', unit)}
-                    color={"#ff7100"}
+                    color={"#a1b92e"}
                     transparentAxis={true}
                     margin={{top: 10, bottom: 50, left: 35, right: 0}}
                     interpolate={"basis"}/>
@@ -172,7 +188,7 @@ let EnvDashboard = React.createClass({
                     height={260}
                     groupedBars={true}
                     transparentAxis={true}
-                    color={['#ff7100','#00aeff','#caf200']}
+                    color={['#0B8000','#87a10d','#caf200']}
                     legend={orientationLegend}
                     margin={{top: 10, bottom: 50, left: 35, right: 0}}
                     interpolate={"basis"}/>
@@ -184,7 +200,7 @@ let EnvDashboard = React.createClass({
                     height={260}
                     groupedBars={true}
                     legend={accLegend}
-                    color={['#ff7100','#00aeff','#caf200']}
+                    color={['#0B8000','#87a10d','#caf200']}
                     margin={{top: 10, bottom: 50, left: 35, right: 0}}
                     interpolate={"basis"}/>
           </section>

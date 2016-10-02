@@ -190,7 +190,7 @@ let FireBaseTools = {
   isStreamingData(data){
     var isStreaming = false;
     var currTime = Math.floor(new Date().getTime());
-    if(data && data.length && data.hasOwnProperty('latestTime') && data.latestTime > currTime - 10000){
+    if(data && data.length && data.hasOwnProperty('latestTime') && data.latestTime > currTime - 30000){
       isStreaming = true;
     }
     return isStreaming;

@@ -85,7 +85,7 @@ let Footer = React.createClass({
             </div>
           </div>
         </div>
-        <span className="copyright">ⓒ Silicon Labs 2015</span>
+        <span className="copyright">ⓒ Silicon Labs 2016</span>
       </footer>
     );
   }

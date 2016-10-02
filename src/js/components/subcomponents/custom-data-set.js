@@ -17,24 +17,18 @@ var CustomDataSet = React.createClass({
         var color = _props.color || "white";
         var values = _props.values;
         var lines = data.map(function (stack, index) {
-        var c = color;
-        if(typeof color == 'object'){
-            try{
-                c = color[index];
+            var c = color;
+            if(typeof color == 'object'){
+                try{
+                    c = color[index];
+                }
+                catch(e){
+                    c = "white";
+                }
             }
-            catch(e){
-                c = "white";
-            }
-        }
-        return (
-            <Path className="line" d={line(values(stack))} stroke={c}/>
-            );
+            return (<Path key={"path"+index} className="line" d={line(values(stack))} stroke={c}/>);
         });
-        return (
-            <g>
-                {lines}
-            </g>
-        );
+        return (<g>{lines}</g>);
     }
 });
 

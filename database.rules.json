@@ -1,0 +1,22 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "thunderboard":{
+      ".read": true,
+      ".write": "auth.uid === 'YsGcsiI8hkwjImSrr25uZdqlNw3Qkgi8vUWx9MU6'"
+    },
+    "topCharts":{
+      ".read": true,
+      ".write": "auth.uid === 'YsGcsiI8hkwjImSrr25uZdqlNw3Qkgi8vUWx9MU6'"
+    },
+    "sessions":{
+      ".write": "auth.uid === 'YsGcsiI8hkwjImSrr25uZdqlNw3Qkgi8vUWx9MU6'",
+      ".indexOn": ["startTime", "contactInfo/deviceName"],
+      "$session":{//2592000000 is 30 days
+        ".read": "data.child('startTime').val() > (now - 2992000000)",
+        ".write":  "auth.uid === 'YsGcsiI8hkwjImSrr25uZdqlNw3Qkgi8vUWx9MU6'"
+      }
+    }
+  }
+}

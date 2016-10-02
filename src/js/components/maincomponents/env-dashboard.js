@@ -83,13 +83,36 @@ let EnvDashboard = React.createClass({
     }
     return temp;
   },
+
+  shouldComponentUpdate(nextProps, nextState){
+    if(this.hasRenderedRecently && this.state.unit == nextState.unit){
+      return false;
+    }
+    this.hasRenderedRecently = this.state.unit == nextState.unit && this.state.data === nextState.data;
+    var throttle = 1;
+    try{
+      throttle = Object.keys(this.state.data[0]).length / 2 > 500 ? Object.keys(this.state.data[0]).length / 2 : 500;
+    }catch(e){}
+    setTimeout(()=>{
+      this.hasRenderedRecently = false;
+    },throttle);
+    nextState = nextState || {};
+    return this.state.unit == nextState.unit && this.state.data === nextState.data;
+  },
+  
   render() {
     let limiter = this.isStreaming ? 30 : false;
     let temp = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('temperature',this.state.data), limiter);
     let humid = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('humidity',this.state.data), limiter);
     let ambientlight = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('ambientLight',this.state.data), limiter);
     let uv = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('uvIndex',this.state.data), limiter);
-    let header = (<HeaderTitle demoType="motion" title="ENVIRONMENT" color="#a1b92e"/>);
+
+    let co2 = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('co2',this.state.data), limiter);;
+    let voc = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('voc',this.state.data), limiter);;
+    let sound = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('sound',this.state.data), limiter);;
+    let pressure = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('pressure',this.state.data), limiter);;
+
+    let header = (<HeaderTitle demoType="motion" title="ENVIRONMENT" color="#ffffff"/>);
     var skipsTime;
     if(temp && temp.skipsTime){
       skipsTime = (<h3 className="timeskip"><sup>*</sup>Results may include connection loss.</h3>);
@@ -113,9 +136,9 @@ let EnvDashboard = React.createClass({
                 metric={metric}
                 csvTitle={FireBaseTools.csvTitle('Environment Data',temp)}
                 headerTitle={header}>
-        <div className="sections">
-          <section className="top-and-bottom">
-            <CustomLineChart ref="chart"
+        <div className="sections env">
+          <section className="side-by-side">
+            {temp && temp.length && temp[0].values && temp[0].values.length ? <CustomLineChart ref="chart"
                     data={temp}
                     title={"Temperature"}
                     width={this.state.parentWidth}
@@ -126,8 +149,8 @@ let EnvDashboard = React.createClass({
                     dataKey={this.currentValue(temp,'°' + unit)}
                     renderAvgLine={true}
                     margin={{top: 10, bottom: 50, left: 35, right: 0}}
-                    interpolate={"basis"}/>
-            <CustomLineChart ref="chart"
+                    interpolate={"basis"}/>:false}
+            {ambientlight && ambientlight.length && ambientlight[0].values && ambientlight[0].values.length ? <CustomLineChart ref="chart"
                     data={ambientlight}
                     title={"Ambient Light"}
                     width={this.state.parentWidth}
@@ -138,10 +161,8 @@ let EnvDashboard = React.createClass({
                     transparentAxis={true}
                     renderAvgLine={true}
                     margin={{top: 10, bottom: 50, left: 35, right: 0}}
-                    interpolate={"basis"}/>
-          </section>
-          <section className="top-and-bottom">
-            <CustomLineChart ref="chart"
+                    interpolate={"basis"}/>:false}
+            {humid && humid.length && humid[0].values && humid[0].values.length ? <CustomLineChart ref="chart"
                     data={humid}
                     title={"Humidity"}
                     width={this.state.parentWidth}
@@ -152,8 +173,8 @@ let EnvDashboard = React.createClass({
                     dataKey={this.currentValue(humid,'%')}
                     renderAvgLine={true}
                     margin={{top: 10, bottom: 50, left: 35, right: 0}}
-                    interpolate={"basis"}/>
-            <CustomLineChart ref="chart"
+                    interpolate={"basis"}/>:false}
+            {uv && uv.length && uv[0].values && uv[0].values.length ? <CustomLineChart ref="chart"
                     data={uv}
                     color={this.dynamicUVColor(uv)}
                     title={"UV Index"}
@@ -164,7 +185,56 @@ let EnvDashboard = React.createClass({
                     transparentAxis={true}
                     renderAvgLine={true}
                     margin={{top: 10, bottom: 50, left: 35, right: 0}}
-                    interpolate={"basis"}/>
+                    interpolate={"basis"}/>:false}
+            {co2 && co2.length && co2[0].values && co2[0].values.length ? <CustomLineChart ref="chart"
+                    data={co2}
+                    title={"CO2 Level"}
+                    unit={'ppm'}
+                    color={this.dynamicCO2Color(co2)}
+                    width={this.state.parentWidth}
+                    height={260}
+                    dataKey={this.currentValue(co2,'ppm')}
+                    transparentAxis={true}
+                    renderAvgLine={true}
+                    margin={{top: 10, bottom: 50, left: 35, right: 0}}
+                    interpolate={"basis"}/>:false}
+            {voc && voc.length && voc[0].values && voc[0].values.length ? <CustomLineChart ref="chart"
+                    data={voc}
+                    title={"TVOC Level"}
+                    unit={'ppb'}
+                    color={this.dynamicVOCColor(voc)}
+                    width={this.state.parentWidth}
+                    height={260}
+                    dataKey={this.currentValue(voc,'ppb')}
+                    transparentAxis={true}
+                    renderAvgLine={true}
+                    margin={{top: 10, bottom: 50, left: 35, right: 0}}
+                    interpolate={"basis"}/>:false}
+            {sound && sound.length && sound[0].values && sound[0].values.length ? <CustomLineChart ref="chart"
+                    data={sound}
+                    title={"Sound Level"}
+                    width={this.state.parentWidth}
+                    height={260}
+                    unit={'dB'}
+                    color={this.dynamicSoundColor(sound)}
+                    transparentAxis={true}
+                    dataKey={this.currentValue(sound,'dB')}
+                    renderAvgLine={true}
+                    margin={{top: 10, bottom: 50, left: 35, right: 0}}
+                    interpolate={"basis"}/>:false}
+            {pressure && pressure.length && pressure[0].values && pressure[0].values.length ? <CustomLineChart ref="chart"
+                    data={pressure}
+                    title={"Pressure"}
+                    width={this.state.parentWidth}
+                    height={260}
+                    unit={'mbar'}
+                    color={this.dynamicPressureColor(pressure)}
+                    transparentAxis={true}
+                    dataKey={this.currentValue(pressure,'mbar')}
+                    renderAvgLine={true}
+                    margin={{top: 10, bottom: 50, left: 35, right: 0}}
+                    interpolate={"basis"}/>:false}
+              <div className="chart no-content" ref="chart"/>
           </section>
           {skipsTime}
         </div>
@@ -264,20 +334,20 @@ let EnvDashboard = React.createClass({
     }
     catch(e){}
     var color = '#ffa200';
-    if(value < 360){
+    if(value < 10000){
       color = '#ff7100';
     }
-    if(value < 320){
+    if(value < 1000){
       color = '#ff7469';
     }
-    if(value < 280){
+    if(value < 500){
+      color = '#ffae9d';
+    }
+    if(value < 300){
       color = '#ffe7cf';
     }
-    if(value < 240){
-      color = '#fff4f1';
-    }
     if(value < 200){
-      color = '#ffffff';
+      color = '#fff4f1';
     }
     if(value < 160){
       color = '#e9e3ff';
@@ -291,6 +361,7 @@ let EnvDashboard = React.createClass({
     if(value < 40){
       color = '#857cff';
     }
+
     return color;
     
   },
@@ -310,6 +381,61 @@ let EnvDashboard = React.createClass({
       color = '#ffcc00';
     }
     if(value < 3){
+      color = '#a1b92e';
+    }
+    return color;
+  },
+  dynamicSoundColor(value){
+    try{
+      value = value[0].values[value[0].values.length -1].y;
+    }
+    catch(e){}
+    var color = '#e65100';
+    if(value < 120){
+      color = '#ffa200';
+    }
+    if(value < 90){
+      color = '#ffcc00';
+    }
+    if(value < 60){
+      color = '#a1b92e';
+    }
+    if(value < 30){
+      color = '#00aeff';
+    }
+
+    return color;
+  },
+  dynamicVOCColor(value){
+    try{
+      value = value[0].values[value[0].values.length -1].y;
+    }
+    catch(e){}
+    var color = '#e65100';
+    if(value < 1000){
+      color = '#ffcc00';
+    }
+    if(value < 100){
+      color = '#a1b92e';
+    }
+    return color;
+  },
+  dynamicPressureColor(value){
+    return '#a1b92e';
+  },
+  dynamicCO2Color(value){
+    try{
+      value = value[0].values[value[0].values.length -1].y;
+    }
+    catch(e){}
+    var color = '#333333';
+    if(value < 5000){
+      color = '#e65100';
+    }
+    if(value < 1200){
+      color = '#ffcc00';
+    }
+    if(value < 1000){
       color = '#a1b92e';
     }
     return color;

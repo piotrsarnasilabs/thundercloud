@@ -1,24 +1,42 @@
 @primaryColor:#0f7396;
-@secondaryColor:#555555;
-@backgroundGray:#6c6c6c;
-@headerGray:#464646;
 @footer-height:130px;
 @maxWidth:900px;
 @mobileWidth:650px;
 @sidePadding:30px;
 
+@dark_gray:#333333;
+@footer_gray:#464646;
+@silicon_gray:#555555;
+@medium_gray:#797777;
+@gray:#d4d4d4;
+@light_gray:#eeeeee;
+@white:#ffffff;
+@yellow:#ffcc00;
+@gold:#f0b323;
+@yellow_orange:#ffa200;
+@bromine_orange:#ff7100;
+@red_orange:#e65100;
+@blue:#00aeff;
+@light_blue:#78d6ff;
+@bright_green:#caf200;
+@terbium_green:#a1b92e;
+@medium_green:#87a10d;
+@dark_green:#0B8000;
+
+
 .light{
-  font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  font-family: "Open Sans", "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
   font-weight: 300;
   font-stretch:normal;
 }
 .bold{
-  font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", "Helvetica", Arial, sans-serif;;
+  font-family: "Open Sans", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", "Helvetica", Arial, sans-serif;;
   font-weight: 600;
   font-stretch:normal;
+  -webkit-font-smoothing: antialiased;
 }
 .medium{
-  font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", "Helvetica", Arial, sans-serif; 
+  font-family: "Open Sans", "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", "Helvetica", Arial, sans-serif; 
   font-weight: 500;
   font-stretch:normal;
 }
@@ -32,16 +50,16 @@
   letter-spacing: 0px;
   outline:0;
   border:0;
-  background:@secondaryColor;
-  color: #ffffff;
+  background:@light_gray;
+  color: @silicon_gray;
   height:60px;
   line-height: 60px;
   font-size:14px;
   .transform(translate3d(0,0,0));
   &.touch{
     opacity: 0.5;
-    color:white;
-    background-color:@secondaryColor;
+    color:@silicon_gray;
+    background-color:@gray;
   }
   &.disabled{
     opacity: 0.5;
@@ -62,10 +80,10 @@
     }
   }
   &.white{
-    background:white;
+    background:@silicon_gray;
     color:black;
     &.touch{
-      backround:white;
+      backround:@silicon_gray;
       color:black;
     }
   }
@@ -77,11 +95,11 @@
     background:@primaryColor;
   }
   &.alt{
-    border:1px solid white;
+    border:1px solid @silicon_gray;
     background:transparent;
-    color:white;
+    color:@silicon_gray;
     &.touch{
-      color:white;
+      color:@silicon_gray;
       background-color:transparent;
     }
   }

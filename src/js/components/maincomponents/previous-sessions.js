@@ -19,7 +19,7 @@ let PreviousSessions = React.createClass({
       this.bindAsArray(ref, 'sessions');
     }
     setTimeout(function(){
-      if(!this.state.hasFetched){
+      if(this.isMounted && this.isMounted() && !this.state.hasFetched){
         this.setState({hasFetched:true});
       }
     }.bind(this),8000);

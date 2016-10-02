@@ -2,10 +2,10 @@ header.main-header{
   height: 100px;
   width: 100%;
   position: relative;
-  background:@headerGray;
-  color:white;
+  background:@terbium_green;
+  color:@white;
   padding:0 @sidePadding;
-  box-shadow: 0 0 5px #464646;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   .wrap{
     max-width: @maxWidth;
     margin:0 auto;
@@ -49,12 +49,12 @@ header.main-header{
     text-align: right;
     .transform(translateY(-50%));
     h1{
-      color:#c1c1c1;
+      color:@white;
       .bold;
     }
   }
   .title{
-    color:white;
+    color:@white;
     position:absolute;
     left:0;
     right:0;

@@ -9,7 +9,7 @@
   .keys{
     margin: 0 auto;
     text-align: center;
-    color:#dbdbdb;
+    color:@silicon_gray;
     font-size:12px;
     position: absolute;
     left: 0;
@@ -62,22 +62,22 @@
           width: 46%;
 
           &:nth-child(odd){
-            margin-left: 4%;
+            margin-right: 4%;
           }
           &:nth-child(even){
-            margin-right: 4%;
+            margin-left: 4%;
           }
         }
       }
       h1.section-header{
-        color:#efefef;
+        color:@silicon_gray;
         font-size:18px;
         text-transform: uppercase;
         padding-left:25px;
         padding-bottom: 20px;
       }
       h2.header{
-        color:#efefef;
+        color:@silicon_gray;
         padding-left:30px;
         text-transform: uppercase;
         font-size:12px;
@@ -87,13 +87,17 @@
         display: block;
         font-weight: 300;
         position: relative;
+        &.no-content{
+          padding:0;
+          margin:0;
+        }
         .last-point{
           position: absolute;
           top:0;
           right:0;
           .bold;
           &.current{
-            color:#efefef;
+            color:@silicon_gray;
             top:10px;
             .medium;
             text-align: right;
@@ -129,14 +133,14 @@
           }
         }
 
-      &.top-and-bottom{
-        .clearfix;
-        float:none;
-        width: 100%;
-        &:nth-child(odd),&:nth-child(even){
-          margin:0;
+        &.top-and-bottom{
+          .clearfix;
+          float:none;
+          width: 100%;
+          &:nth-child(odd),&:nth-child(even){
+            margin:0;
+          }
         }
-      }
         .chart{
           padding-bottom:50px;
         }

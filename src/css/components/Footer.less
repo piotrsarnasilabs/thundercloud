@@ -1,8 +1,8 @@
 footer{
   height: @footer-height;
   width: 100%;
-  background:@secondaryColor;
-  color:white;
+  background:@light_gray;
+  color:@silicon_gray;
   position:relative;
   .clearfix;
   .wrap{
@@ -27,7 +27,7 @@ footer{
       h1{
         .medium;
         font-size: 14px;
-        color:white;
+        color:@silicon_gray;
       }
       h2{
         font-size:12px;
@@ -43,7 +43,7 @@ footer{
     .button{
       .medium;
       text-align: center;
-      color:#c1c1c1;
+      color:@medium_gray;
       text-transform: uppercase;
       font-size:12px;
       position:relative;
@@ -53,16 +53,16 @@ footer{
       height:80px;
       line-height: 80px;
       &:hover a, &.Tappable-active a{
-        color:#00aeff;
-        border-bottom:1px solid #00aeff;
+        color:@blue;
+        border-bottom:1px solid @blue;
       }
-      &.Tappable-inactive a{
+      &:not(:hover).Tappable-inactive a{
         border-bottom:0;
-        color:#c1c1c1;
+        color:@medium_gray;
       }
       a{
         padding-bottom:2px;
-        color:#c1c1c1;
+        color:@medium_gray;
       }
       &:first-child{
         padding-left:0;
@@ -78,7 +78,7 @@ footer{
         left:0;
         .transform(translateY(-50%));
         height:20px;
-        border-right: 1px solid rgba(239,239,239, 0.2);
+        border-right: 1px solid @medium_gray;
       }
       &:last-child{
         padding-right:0;
@@ -86,7 +86,7 @@ footer{
     }
   }
   .copyright{
-    background:@backgroundGray;
+    background:@white;
     text-align:center;
     color:#c1c1c1;
     margin:0 auto;
@@ -110,7 +110,7 @@ footer{
       height:80px;
     }
     .wrap{
-      background:@backgroundGray;
+      background:@white;
       padding:0;
     }
     .links{

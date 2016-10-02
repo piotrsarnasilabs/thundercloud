@@ -130,7 +130,7 @@ let IODashboard = React.createClass({
     let ledb = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('ledb',this.state.data), limiter);
     let ledg = FireBaseTools.limitArray(FireBaseTools.findKeyFromArray('ledg',this.state.data), limiter);
 
-    let header = (<HeaderTitle demoType="io" title="I/O" color="#ffcc00"/>);
+    let header = (<HeaderTitle demoType="io" title="I/O" color="#ffffff"/>);
     var skipsTime;
     if(sw0 && sw0.skipsTime){
       skipsTime = (<h3 className="timeskip"><sup>*</sup>Results may include connection loss.</h3>);
@@ -148,8 +148,8 @@ let IODashboard = React.createClass({
           <section className="side-by-side">
             <h1 className="section-header">Switches</h1>
             <CustomLineChart ref="chart"
-                      color={"#ffcc00"}
-                      dataKey={this.renderTimestampKey(sw0, '#ffcc00')}
+                      color={"#caf200"}
+                      dataKey={this.renderTimestampKey(sw0, '#caf200')}
                       data={sw0}
                       width={this.state.parentWidth}
                       isStreaming={this.isStreaming}
@@ -159,8 +159,8 @@ let IODashboard = React.createClass({
                       margin={{top: 20, bottom: 40, left: 30, right: 20}}
                       interpolate={"step-after"}/>
             <CustomLineChart ref="chart"
-                      color={"#ffa200"}
-                      dataKey={this.renderTimestampKey(sw1, '#ffa200')}
+                      color={"#87a10d"}
+                      dataKey={this.renderTimestampKey(sw1, '#87a10d')}
                       data={sw1}
                       width={this.state.parentWidth}
                       isStreaming={this.isStreaming}

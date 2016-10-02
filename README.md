@@ -17,13 +17,6 @@ The web client is built with various web tools including:
 
 ---
 
-##Firebase Setup
-1. Setup a [Firebase](https://www.firebase.com/) account and database.
-2. Set that Firebase url on `line 16` of `src/js/main.js`
-	- `window.firebaseURL = 'https://___________.firebaseio.com/';`
-3. Set the firebase project name on `line 2` of `firebase.json`. It should be something like `glowing-inferno-55555`
-4. Install the [Firebase command line tools](https://www.firebase.com/docs/hosting/command-line-tool.html) which will allow you to deploy your changes to Firebase with `firebase deploy.`
-
 ##Getting Started
 1. After downloading the source, you will need to get all of the required packages to run the local server. 
 	- Run `npm install` (For more information on npm, see [npmjs.com](https://www.npmjs.com/))
@@ -32,6 +25,13 @@ The web client is built with various web tools including:
 4. When streaming data to Firebase from the device, you will be given a URL with the scheme of `/#/ (device id) / (session id) / (demo type)`
 	- All valid URLs can be found in `src/js/main.js`
 	
+##Firebase Setup
+1. Setup a [Firebase](https://www.firebase.com/) account and database.
+2. Set that Firebase url on `line 16` of `src/js/main.js`
+	- `window.firebaseURL = 'https://___________.firebaseio.com/bluegecko/';`
+3. Set the firebase project name on `line 2` of `firebase.json`. It should be something like `glowing-inferno-55555`
+4. Install the [Firebase command line tools](https://www.firebase.com/docs/hosting/command-line-tool.html) which will allow you to deploy your changes to Firebase.
+
 ###Database Structure
 
     {

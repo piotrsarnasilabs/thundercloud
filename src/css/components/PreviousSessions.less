@@ -1,0 +1,98 @@
+.view.previous-sessions{
+  footer{
+    background:transparent;
+  }
+  .sections{
+    position: relative;
+    margin:0 auto;
+    max-width:500px;
+    padding:40px 30px;
+    min-height:450px;
+    .clearfix;
+    .session{
+      padding:15px 0;
+      cursor:pointer;
+      width: 50%;
+      float: left;
+      .clearfix;
+      &.Tappable-active{
+        opacity: 0.9;
+      }
+      .icon{
+        height:50px;
+        width:50px;
+        background:url('../assets/images/icn_demo_environmental_unsel@3x.png') center center no-repeat;
+        float:left;
+        background-size: contain;
+        &[data-type="motion"]{
+          background:url('../assets/images/icn_demo_motion_unsel@3x.png') center center no-repeat;
+          background-size: contain;
+        }
+        &[data-type="io"]{
+          background:url('../assets/images/icn_demo_io_unsel@3x.png') center center no-repeat;
+          background-size: contain;
+        }
+      }
+      .data{
+        padding-left:15px;
+        float:left;
+        h1{
+          .medium;
+          padding-bottom: 2px;
+          font-size:14px;
+        }
+        .subtext{
+          line-height: 16px;
+          color:#c1c1c1;
+        }
+      }
+    }
+    .loading{
+      position:absolute;
+      top:50%;
+      left:0;
+      right:0;
+      width: 86px;
+      height: 86px;
+      margin: -43px auto 0;
+      border: 5px #eee solid;
+      border-top: 5px @terbium_green solid;
+      .border-radius(50%);
+      -webkit-animation: rotate .7s infinite linear;
+      animation: rotate .7s infinite linear;
+    }
+    .no-data{
+      position: relative;
+      margin:0 auto;
+      max-width:500px;
+      padding:40px 30px 0;
+      font-size:18px;
+      color:white;
+      text-align: center;
+      line-height: 22px;
+    }
+  }
+  @media screen and (max-width:@mobileWidth){
+    .sections{
+      .session{
+        float:none;
+        width:100%;
+      }
+      .loading{
+        width: 50px;
+        height: 50px;
+        margin: -25px auto 0;
+        border: 3px ##eee solid;
+        border-top: 3px @terbium_green solid;
+      }
+    }
+  }
+}
+@-webkit-keyframes rotate {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(359deg); }
+}
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+}

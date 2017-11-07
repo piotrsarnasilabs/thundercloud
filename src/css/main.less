@@ -1,0 +1,41 @@
+a,
+a:link,
+a:visited,
+a:active,
+a:hover {
+  color: @silicon_gray ;
+}
+html {
+  font-size: 10px;
+  height:auto;
+  min-height: 100%;
+  min-width:320px;
+  font-family: 'Open Sans', "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+body {
+  .light;
+  position: relative;
+  background: @white;
+  -webkit-overflow-scrolling: touch;
+  -moz-overflow-scrolling: touch;
+  -o-overflow-scrolling: touch;
+  -ms-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+#view-root{
+  min-height: 100%;
+}
+.view {
+  position: relative;
+  font-size: 1.2rem;
+  min-height: 100%;
+
+
+  .view-interior {
+    background: @white;
+    -webkit-transform: rotateY(0);
+    min-height: 350px;
+    margin: 0 auto -@footer-height;
+    padding-bottom: @footer-height;
+  }
+}

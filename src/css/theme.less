@@ -1,0 +1,135 @@
+@primaryColor:#0f7396;
+@footer-height:130px;
+@maxWidth:900px;
+@mobileWidth:650px;
+@sidePadding:30px;
+
+@dark_gray:#333333;
+@footer_gray:#464646;
+@silicon_gray:#555555;
+@medium_gray:#797777;
+@gray:#d4d4d4;
+@light_gray:#eeeeee;
+@white:#ffffff;
+@yellow:#ffcc00;
+@gold:#f0b323;
+@yellow_orange:#ffa200;
+@bromine_orange:#ff7100;
+@red_orange:#e65100;
+@blue:#00aeff;
+@light_blue:#78d6ff;
+@bright_green:#caf200;
+@terbium_green:#a1b92e;
+@medium_green:#87a10d;
+@dark_green:#0B8000;
+
+
+.light{
+  font-family: "Open Sans", "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  font-weight: 300;
+  font-stretch:normal;
+}
+.bold{
+  font-family: "Open Sans", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", "Helvetica", Arial, sans-serif;;
+  font-weight: 600;
+  font-stretch:normal;
+  -webkit-font-smoothing: antialiased;
+}
+.medium{
+  font-family: "Open Sans", "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", "Helvetica", Arial, sans-serif; 
+  font-weight: 500;
+  font-stretch:normal;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 0px;
+  outline:0;
+  border:0;
+  background:@light_gray;
+  color: @silicon_gray;
+  height:60px;
+  line-height: 60px;
+  font-size:14px;
+  .transform(translate3d(0,0,0));
+  &.touch{
+    opacity: 0.5;
+    color:@silicon_gray;
+    background-color:@gray;
+  }
+  &.disabled{
+    opacity: 0.5;
+    &.touch{
+      opacity: 0.5;
+    }
+  }
+  &.two-line{
+    line-height:auto;
+    line-height: 0;
+    line-height: initial;
+    span{
+      line-height:1.5rem;
+    }
+    .sub{
+      line-height:1rem;
+      font-size:12px;
+    }
+  }
+  &.white{
+    background:@silicon_gray;
+    color:black;
+    &.touch{
+      backround:@silicon_gray;
+      color:black;
+    }
+  }
+  &.sm{
+    height:26px;
+    line-height:26px;
+  }
+  &.primary{
+    background:@primaryColor;
+  }
+  &.alt{
+    border:1px solid @silicon_gray;
+    background:transparent;
+    color:@silicon_gray;
+    &.touch{
+      color:@silicon_gray;
+      background-color:transparent;
+    }
+  }
+}
+
+.segmented-control{
+  display:flex;
+  margin:0 auto;
+  justify-content:center;
+  .control{
+    color:#848484;
+    border:1px solid #848484;
+    height:34px;
+    line-height:34px;
+    background:transparent;
+    border-right:0px;
+    width:100%;
+    font-size:13px;
+    &.Tappable-active, &.active{
+      color:white;
+      background: #848484;
+    }
+    &:first-child{
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    &:last-child{
+      border-right: 1px solid  #848484;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+}
